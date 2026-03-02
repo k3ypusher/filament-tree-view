@@ -135,6 +135,14 @@ trait InteractsWithTree
             return;
         }
 
+        // Cast IDs to the model's key type so strict === comparisons work correctly.
+        // JavaScript sends IDs as strings from dataset.itemId, but integer PKs come
+        // back from Eloquent as integers.
+        if ($node->getKeyType() === 'int') {
+            $nodeId = (int) $nodeId;
+            $referenceId = $referenceId !== null ? (int) $referenceId : null;
+        }
+
         // Get the parent key name from the model
         $parentKeyName = $node->getParentKeyName();
 
