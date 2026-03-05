@@ -85,7 +85,7 @@
                 {{-- Right Side: Status, Action Buttons, and Header Actions --}}
                 <div class="flex items-center gap-4">
                     {{-- Unsaved Changes Indicator and Save/Cancel Buttons --}}
-                    @if (!$tree->isAutoSave())
+                    @if (!$tree->isAutoSave() && $tree->isReorderable())
                         {{-- Unsaved Changes Indicator --}}
                         <div
                             id="tree-changes-indicator"
