@@ -55,18 +55,20 @@
     <div class="filament-tree-node-content fi-ta-row">
         <div class="fi-ta-cell p-0">
             <div class="flex items-center ml-2">
-            {{-- Drag Handle --}}
-                <button
-                    type="button"
-                    data-drag-handle
-                    class="relative filament-tree-drag-handle flex-shrink-0 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 transition-opacity"
-                    title="{{ __('filament-tree-view::tree.node.drag_to_reorder') }}"
-                >
-                    <span class="absolute -inset-2"></span>
-                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
-                    </svg>
-                </button>
+                {{-- Drag Handle --}}
+                @if ($tree->isReorderable())
+                    <button
+                        type="button"
+                        data-drag-handle
+                        class="relative filament-tree-drag-handle flex-shrink-0 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 transition-opacity"
+                        title="{{ __('filament-tree-view::tree.node.drag_to_reorder') }}"
+                    >
+                        <span class="absolute -inset-2"></span>
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                    </button>
+                @endif
 
                 {{-- Collapse/Expand Toggle - Only shown if collapse is enabled --}}
                 <div class="filament-tree-toggle-container">
